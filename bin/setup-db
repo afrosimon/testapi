@@ -1,0 +1,20 @@
+#!/bin/bash
+# Usage: bin/setup-db localhost 5432
+set -eux
+
+HOST=${1:-}
+DB_PORT=${2:-5432}
+
+if [ -z $HOST ]; then
+    INCLUDE_HOST=""
+else
+    INCLUDE_HOST="-h $HOST"
+fi
+
+psql $INCLUDE_HOST -p "$DB_PORT" -e <<EOF
+CREATE ROLE testapi LOGIN;
+ALTER ROLE testapi SET client_encoding TO 'utf8';
+ALTER ROLE testapi SET timezone TO 'UTC';
+CREATE DATABASE testapi WITH OWNER testapi;
+GRANT ALL PRIVILEGES ON DATABASE testapi TO testapi;
+EOF
