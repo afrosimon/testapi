@@ -13,6 +13,12 @@ $ mkvirtualenv -p python3.6 testapi
 (testapi)$ setvirtualenvproject $VIRTUAL_ENV $(pwd)
 ```
 
+Install python dependencies:
+
+```
+$ pip install -r requirements.txt
+```
+
 To create a database for the local application, run this helper script to create the app user and database.
 
 ```
