@@ -15,6 +15,7 @@ psql $INCLUDE_HOST -p "$DB_PORT" -e <<EOF
 CREATE ROLE testapi LOGIN;
 ALTER ROLE testapi SET client_encoding TO 'utf8';
 ALTER ROLE testapi SET timezone TO 'UTC';
+ALTER ROLE testapi CREATEDB;
 CREATE DATABASE testapi WITH OWNER testapi;
 GRANT ALL PRIVILEGES ON DATABASE testapi TO testapi;
 EOF

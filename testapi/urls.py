@@ -4,5 +4,5 @@ from message.views import message_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('messages/', message_list)
+    path('messages/', message_list, name='message-list')
 ]

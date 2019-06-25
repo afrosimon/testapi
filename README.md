@@ -24,3 +24,17 @@ To create a database for the local application, run this helper script to create
 ```
 $ sudo -u postgres bin/setup-db
 $ sudo -u postgres psql -c "ALTER ROLE testapi WITH PASSWORD '$SOME_PASSWORD'"
+
+## Integration tests
+
+Run:
+
+```
+$ pytest -svv --reuse-db
+```
+
+## Open questions and TODO:
+
+- I do not appreciate giving CREATEDB privilege to the DB user, in a more proper setup (with containers for instance) this
+might not mean much. I considered redefining the django_db_setup() fixture to only run migrations and create the DB only in
+the bin/setup-db script but this not flexible (for instance if I would like to parallelize pytest).
