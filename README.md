@@ -5,6 +5,9 @@ do some funky stuff to learn, essentially.
 
 ## Developer setup
 
+Here's a non-exhaustive list of server dependencies:
+postgresql-10 postgresql-server-dev-10
+
 Use virtualenvwrapper to create a Python 3 environment:
 
 ```
@@ -16,6 +19,7 @@ $ mkvirtualenv -p python3.6 testapi
 Install python dependencies:
 
 ```
+$ pip install --upgrade pip
 $ pip install -r requirements.txt
 ```
 
@@ -24,6 +28,13 @@ To create a database for the local application, run this helper script to create
 ```
 $ sudo -u postgres bin/setup-db
 $ sudo -u postgres psql -c "ALTER ROLE testapi WITH PASSWORD '$SOME_PASSWORD'"
+```
+
+Run the migrations:
+
+```
+$ ./manage.py migrate
+```
 
 ## Integration tests
 

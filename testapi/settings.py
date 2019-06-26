@@ -30,7 +30,7 @@ if ENVIRONMENT == 'dev':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testapi.ninja']
 
 # Application definition
 
