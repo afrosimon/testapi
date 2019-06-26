@@ -1,0 +1,13 @@
+[Unit]
+Description=uwsgi application server (testapi)
+After=network.target
+
+[Service]
+User=testapi
+Group=www-data
+WorkingDirectory=/home/testapi/testapi
+Environment="PATH=/usr/bin:/home/simon/testapi-env/bin"
+ExecStart=/home/simon/testapi-env/bin/uwsgi --ini /home/simon/testapi/uwsgi.ini
+
+[Install]
+WantedBy=multi-user.target

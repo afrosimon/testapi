@@ -38,3 +38,8 @@ $ pytest -svv --reuse-db
 - I do not appreciate giving CREATEDB privilege to the DB user, in a more proper setup (with containers for instance) this
 might not mean much. I considered redefining the django_db_setup() fixture to only run migrations and create the DB only in
 the bin/setup-db script but this not flexible (for instance if I would like to parallelize pytest).
+
+## Deployment
+
+The usual setup would be nginx + uwsgi. The uwsgi configuration is at the root of the project, uwsgi.ini. Otherwise simply
+create the virtualenv, copy and adjust the sample nginx configuration as well as the systemd configuration.

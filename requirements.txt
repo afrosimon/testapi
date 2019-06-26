@@ -16,5 +16,6 @@ pytest-env==0.6.2
 pytz==2019.1
 six==1.12.0
 sqlparse==0.3.0
+uWSGI==2.0.18
 wcwidth==0.1.7
 zipp==0.5.1

@@ -1,0 +1,27 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name testapi.ninja;
+
+    add_header Strict-Transport-Security "max-age=31536000";
+    add_header X-Frame-Options "DENY";
+
+    gzip on;
+    gzip_vary on;
+    gzip_comp_level 6;
+    gzip_buffers 16 8k;
+    gzip_types application/json;
+
+    client_max_body_size 10M;
+    keepalive_timeout 70;
+
+    # Direct to frontend by default
+    location = /favicon.ico {
+        access_log off;
+    }
+
+    location / {
+        include uwsgi_params;
+	uwsgi_pass unix:/home/testapi/testapi/testapi.sock
+    }
+}
