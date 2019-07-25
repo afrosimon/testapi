@@ -1,7 +1,8 @@
 # TESTAPI
 
-Simply dummy project in Django & DRF. The aim is simply to mess around new features in Django or else, test out performance,
-do some funky stuff to learn, essentially.
+Simple dummy project in Django & DRF. The aim is simply to mess around new features in Django or else, 
+test out performance, etc.
+
 
 ## Developer setup
 
@@ -13,7 +14,7 @@ Use virtualenvwrapper to create a Python 3 environment:
 ```
 $ cd path/to/testapi
 $ mkvirtualenv -p python3.6 testapi
-(testapi)$ setvirtualenvproject $VIRTUAL_ENV $(pwd)
+(testapi)$ setvirtualenvproject
 ```
 
 Install python dependencies:
@@ -29,6 +30,9 @@ To create a database for the local application, run this helper script to create
 $ sudo -u postgres bin/setup-db
 $ sudo -u postgres psql -c "ALTER ROLE testapi WITH PASSWORD '$SOME_PASSWORD'"
 ```
+
+As for the configuration, you will need to setup some environment variables, those at the end of the uwsgi.ini.
+With virtualenvwrapper the ~/.virtualenvs/testapi/bin/postactivate script is already there for such a use-case.
 
 Run the migrations:
 
@@ -53,4 +57,11 @@ the bin/setup-db script but this not flexible (for instance if I would like to p
 ## Deployment
 
 The usual setup would be nginx + uwsgi. The uwsgi configuration is at the root of the project, uwsgi.ini. Otherwise simply
-create the virtualenv, copy and adjust the sample nginx configuration as well as the systemd configuration.
+create the virtualenv, copy and adjust the sample nginx configuration (server-config/nginx_sample). uWSGI can be configured
+in a few ways, I would recommend creating a systemd service :
+
+```
+$ cp server-config/testapi.service /etc/systemd/system/testapi.service
+$ systemctl enable testapi
+$ systemctl start testapi
+```

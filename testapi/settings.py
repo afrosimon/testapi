@@ -11,26 +11,24 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')m979rx7_3jxat&^n(wbaf+4!vb&fi8bxidq(u9&4_(=mm3f0f'
+SECRET_KEY = os.environ.get('TESTAPI_SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-ENVIRONMENT = os.environ.get('ENVIRONMENT', 'dev')
+ENVIRONMENT = os.environ.get('TESTAPI_ENVIRONMENT')
 
 if ENVIRONMENT == 'dev':
     DEBUG = True
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['testapi.ninja']
+ALLOWED_HOSTS = os.environ.get('TESTAPI_ALLOWED_HOSTS').split(',')
 
 # Application definition
 
@@ -83,14 +81,7 @@ WSGI_APPLICATION = 'testapi.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'testapi',
-        'USER': 'testapi',
-        'PASSWORD': 'testapi',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 
