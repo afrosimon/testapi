@@ -43,12 +43,12 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '--messages', 
+            '--messages',
             type=int,
             help='Number of messages to generate, default is 100'
         )
         parser.add_argument(
-            '--users', 
+            '--users',
             type=int,
             help='Number of users to create and associate with each message, default is 10'
         )
@@ -78,7 +78,7 @@ class Command(BaseCommand):
                 email='{}@asd.com'.format(username)
             )
             user.save()
-            
+
             users.append(user)
 
         print("Created {} users.".format(nb_users))

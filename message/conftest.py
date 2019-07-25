@@ -13,6 +13,7 @@ def first_user():
 
     return u
 
+
 @pytest.fixture
 def second_user():
     u = User(
@@ -22,6 +23,7 @@ def second_user():
     u.save()
 
     return u
+
 
 @pytest.fixture
 def messages(first_user, second_user):
