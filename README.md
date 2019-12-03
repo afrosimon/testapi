@@ -53,6 +53,7 @@ $ pytest -svv --reuse-db
 - I do not appreciate giving CREATEDB privilege to the DB user, in a more proper setup (with containers for instance) this
 might not mean much. I considered redefining the django_db_setup() fixture to only run migrations and create the DB only in
 the bin/setup-db script but this not flexible (for instance if I would like to parallelize pytest).
+- Should not necessitates having postgresql installed, should be DB agnostic (or see how to include container for DB)
 
 ## Deployment
 
