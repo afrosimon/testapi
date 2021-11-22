@@ -3,25 +3,17 @@
 Simple dummy project in Django & DRF. The aim is simply to mess around new features in Django or else, 
 test out performance, etc.
 
-
 ## Developer setup
 
 Here's a non-exhaustive list of server dependencies:
 postgresql-10 postgresql-server-dev-10
 
-Use virtualenvwrapper to create a Python 3 environment:
-
-```
-$ cd path/to/testapi
-$ mkvirtualenv -p python3.6 testapi
-(testapi)$ setvirtualenvproject
-```
+Make sure you have poetry installed: https://python-poetry.org/docs/master/
 
 Install python dependencies:
 
 ```
-$ pip install --upgrade pip
-$ pip install -r requirements.txt
+$ poetry install
 ```
 
 To create a database for the local application, run this helper script to create the app user and database.
@@ -37,7 +29,7 @@ With virtualenvwrapper the ~/.virtualenvs/testapi/bin/postactivate script is alr
 Run the migrations:
 
 ```
-$ ./manage.py migrate
+$ poetry run ./manage.py migrate
 ```
 
 ## Integration tests
@@ -45,7 +37,7 @@ $ ./manage.py migrate
 Run:
 
 ```
-$ pytest -svv --reuse-db
+$ poetry run pytest -svv --reuse-db
 ```
 
 ## Open questions and TODO:
