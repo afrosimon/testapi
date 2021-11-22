@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
 
-    'message.apps.MessageConfig'
+    'message.apps.MessageConfig',
+    'library.apps.LibraryConfig'
 ]
 
 MIDDLEWARE = [
@@ -81,9 +82,10 @@ WSGI_APPLICATION = 'testapi.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=False)
 }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

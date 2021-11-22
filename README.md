@@ -54,6 +54,7 @@ $ pytest -svv --reuse-db
 might not mean much. I considered redefining the django_db_setup() fixture to only run migrations and create the DB only in
 the bin/setup-db script but this not flexible (for instance if I would like to parallelize pytest).
 - Should not necessitates having postgresql installed, should be DB agnostic (or see how to include container for DB)
+- Configure journalctl disk usage / mem usage (like seriously... that shit gets crazy after a few months)
 
 ## Deployment
 
