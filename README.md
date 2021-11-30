@@ -23,8 +23,8 @@ $ sudo -u postgres bin/setup-db
 $ sudo -u postgres psql -c "ALTER ROLE testapi WITH PASSWORD '$SOME_PASSWORD'"
 ```
 
-As for the configuration, you will need to setup some environment variables, those at the end of the uwsgi.ini.
-With virtualenvwrapper the ~/.virtualenvs/testapi/bin/postactivate script is already there for such a use-case.
+As for the configuration, the required environment variables are in .env-sample, copy this file to .env
+and update accordingly (TODO: load the file whenever poetry is run).
 
 Run the migrations:
 
